@@ -8,16 +8,12 @@ use Illuminate\Validation\Rule;
 
 class ProfileUpdateRequest extends FormRequest{
    
-    public function authorize(): bool
-    {
+    public function authorize(): bool{
         return true;
     }
 
-    /**
-     * Règles de validation
-     */
-    public function rules(): array
-    {
+   
+    public function rules(): array{
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => [
