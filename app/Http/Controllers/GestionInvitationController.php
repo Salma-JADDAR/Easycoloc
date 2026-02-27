@@ -11,13 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InvitationMail;
 
-class GestionInvitationController extends Controller
-{
-    /**
-     * Créer une nouvelle invitation
-     */
-    public function creerInvitation(Request $requete, $idColoc)
-    {
+class GestionInvitationController extends Controller{
+   
+    public function creerInvitation(Request $requete, $idColoc){
         $utilisateurConnecte = Auth::user();
 
         if (!$utilisateurConnecte) {

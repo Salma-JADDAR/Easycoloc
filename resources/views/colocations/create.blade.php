@@ -26,7 +26,7 @@
             <form method="POST" action="{{ route('colocations.store') }}" class="form-container">
                 @csrf
 
-                <!-- Nom de la colocation -->
+            
                 <div class="form-group">
                     <label for="name" class="form-label">
                         Nom de la colocation <span class="required">*</span>
@@ -43,7 +43,6 @@
                     @enderror
                 </div>
 
-                <!-- Description -->
                 <div class="form-group">
                     <label for="description" class="form-label">
                         Description <span class="optional">(optionnel)</span>
@@ -58,7 +57,7 @@
                     @enderror
                 </div>
 
-                <!-- Informations -->
+            
                 <div class="info-box">
                     <div class="info-content">
                         <svg class="info-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +72,7 @@
                     </div>
                 </div>
 
-                <!-- Boutons -->
+                
                 <div class="form-actions">
                     <a href="{{ route('colocations.index') }}" class="btn-secondary">
                         Annuler
@@ -91,7 +90,7 @@
 </div>
 
 <style>
-    /* Variables du thème */
+   
     :root {
         --primary-green: #064e3b;
         --accent-green: #10b981;
@@ -120,7 +119,7 @@
             radial-gradient(at 100% 100%, rgba(6, 78, 59, 0.05) 0px, transparent 50%);
     }
 
-    /* Blobs animés */
+  
     .blob {
         position: fixed;
         border-radius: 50%;
@@ -153,7 +152,7 @@
         66% { transform: translate(-20px, 20px) rotate(240deg); }
     }
 
-    /* Container */
+ 
     .container {
         max-width: 800px;
         margin: 0 auto;
@@ -161,7 +160,7 @@
         z-index: 1;
     }
 
-    /* Page Header */
+ 
     .page-header {
         position: relative;
         margin-bottom: 2rem;
@@ -287,7 +286,7 @@
         margin-top: 0.25rem;
     }
 
-    /* Info box */
+    
     .info-box {
         background: var(--glow-green);
         border: 1px solid var(--accent-green);
@@ -317,7 +316,7 @@
         line-height: 1.5;
     }
 
-    /* Boutons */
+  
     .form-actions {
         display: flex;
         align-items: center;
@@ -363,7 +362,7 @@
         background: var(--gray-200);
     }
 
-    /* Responsive */
+
     @media (max-width: 768px) {
         .dashboard {
             padding: 1rem;
