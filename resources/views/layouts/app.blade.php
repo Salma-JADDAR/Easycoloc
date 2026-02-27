@@ -5,22 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', config('app.name', 'EasyColoc'))</title>
-    
-    <!-- Fonts - Même style que welcome -->
+ 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=cormorant-garamond:300,500|dm-sans:300,400,500&display=swap" rel="stylesheet" />
-    
-    <!-- Scripts -->
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
-    <!-- Alpine.js -->
+
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <!-- Font Awesome -->
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* ===== VARIABLES ===== */
+ 
         :root {
             --primary-green: #064e3b;
             --accent-green: #10b981;
@@ -61,7 +57,7 @@
             color: var(--primary-green);
         }
 
-        /* ===== BLOBS ANIMÉS (comme welcome) ===== */
+  
         .blob {
             position: fixed;
             border-radius: 50%;
@@ -99,7 +95,6 @@
             to { transform: translate(50px, 100px) scale(1.1); }
         }
 
-        /* ===== LAYOUT PRINCIPAL ===== */
         .app-layout {
             display: flex;
             min-height: 100vh;
@@ -107,7 +102,6 @@
             z-index: 1;
         }
 
-        /* ===== PANEL LATÉRAL ===== */
         .sidebar {
             width: 280px;
             background: rgba(255, 255, 255, 0.8);
@@ -130,7 +124,7 @@
             to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Logo */
+       
         .sidebar-logo {
             padding: 2rem 1.5rem;
             border-bottom: 1px solid rgba(6, 78, 59, 0.1);
@@ -177,7 +171,6 @@
             font-style: italic;
         }
 
-        /* Navigation */
         .sidebar-nav {
             flex: 1;
             padding: 2rem 1rem;
@@ -275,7 +268,7 @@
             text-transform: uppercase;
         }
 
-        /* Admin section */
+   
         .admin-section {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -301,7 +294,7 @@
             text-transform: uppercase;
         }
 
-        /* User info */
+    
         .sidebar-user {
             padding: 1.5rem;
             border-top: 1px solid rgba(6, 78, 59, 0.1);
@@ -353,7 +346,7 @@
             text-overflow: ellipsis;
         }
 
-        /* Badges */
+  
         .user-badges {
             display: flex;
             flex-wrap: wrap;
@@ -388,7 +381,7 @@
             color: #b91c1c;
         }
 
-        /* Logout button */
+  
         .logout-btn {
             width: 100%;
             display: flex;
@@ -412,7 +405,7 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* ===== CONTENU PRINCIPAL ===== */
+   
         .main-content {
             flex: 1;
             margin-left: 280px;
@@ -421,7 +414,7 @@
             z-index: 1;
         }
 
-        /* Messages */
+ 
         .alert {
             margin: 1.5rem;
             padding: 1rem 1.5rem;
@@ -463,12 +456,12 @@
             }
         }
 
-        /* Page content */
+
         .page-content {
             padding: 2rem;
         }
 
-        /* ===== RESPONSIVE ===== */
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -502,7 +495,6 @@
             }
         }
 
-        /* Scrollbar personnalisée */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -523,20 +515,19 @@
     </style>
 </head>
 <body>
-    <!-- Blobs d'arrière-plan (comme welcome) -->
+  
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
 
-    <!-- Mobile Menu Toggle (caché sur desktop) -->
     <div class="mobile-menu-toggle" onclick="toggleSidebar()" style="display: none;">
         <i class="fas fa-bars"></i>
     </div>
 
     <div class="app-layout">
-        <!-- Panel Latéral -->
+   
         <div class="sidebar" id="sidebar">
-            <!-- Logo -->
+       
             <div class="sidebar-logo">
                 <a href="{{ route('dashboard') }}" class="logo-link">
                     <div class="logo-icon">
@@ -548,7 +539,6 @@
                 </a>
             </div>
 
-            <!-- Navigation -->
             <nav class="sidebar-nav">
                 <div class="nav-section">
                     <div class="nav-section-title">Menu principal</div>
@@ -569,7 +559,7 @@
                     </a>
                 </div>
 
-                <!-- Section Admin (visible uniquement pour les admins) -->
+             
                 @if(auth()->check() && auth()->user()->role === 'admin')
                     <div class="admin-section">
                         <div class="nav-section-title">Administration</div>
@@ -583,7 +573,6 @@
                 @endif
             </nav>
 
-            <!-- User Info -->
             <div class="sidebar-user">
                 <div class="user-card">
                     <div class="user-avatar">
@@ -599,7 +588,6 @@
                     </div>
                 </div>
 
-                <!-- Badges -->
                 <div class="user-badges">
                     @if(auth()->user()->role === 'admin')
                         <span class="badge badge-admin">
@@ -618,7 +606,6 @@
                     @endif
                 </div>
 
-                <!-- Logout -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="logout-btn">
@@ -629,9 +616,8 @@
             </div>
         </div>
 
-        <!-- Contenu principal -->
         <div class="main-content">
-            <!-- Messages -->
+      
             @if(session('success'))
                 <div class="alert alert-success">
                     <div class="alert-icon">
@@ -650,7 +636,6 @@
                 </div>
             @endif
 
-            <!-- Page Content -->
             <div class="page-content">
                 @yield('content')
             </div>
@@ -658,13 +643,13 @@
     </div>
 
     <script>
-        // Mobile sidebar toggle
+      
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('open');
         }
 
-        // Fermer la sidebar en cliquant en dehors (mobile)
+
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
             const toggle = document.querySelector('.mobile-menu-toggle');
@@ -676,12 +661,10 @@
             }
         });
 
-        // Afficher le toggle sur mobile
         if (window.innerWidth <= 768) {
             document.querySelector('.mobile-menu-toggle').style.display = 'flex';
         }
 
-        // Gérer le redimensionnement
         window.addEventListener('resize', function() {
             const toggle = document.querySelector('.mobile-menu-toggle');
             if (window.innerWidth <= 768) {
