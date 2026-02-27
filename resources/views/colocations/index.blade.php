@@ -3,13 +3,13 @@
 @section('title', 'Mes colocations')
 
 @section('content')
-<!-- Blobs d'arrière-plan animés -->
+
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 
 <div class="colocations-container">
-    <!-- ===== EN-TÊTE AVEC STATISTIQUES ===== -->
+   
     <div class="page-header">
         <div class="header-main">
             <div class="header-left">
@@ -43,7 +43,7 @@
             @endif
         </div>
 
-        <!-- Mini statistiques -->
+    
         <div class="header-stats">
             <div class="header-stat">
                 <span class="header-stat-value">{{ $colocations->count() + $ownedColocations->count() }}</span>
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <!-- Messages -->
+   
     @if(session('success'))
         <div class="alert alert-success">
             <div class="alert-icon">
@@ -85,7 +85,7 @@
         </div>
     @endif
 
-    <!-- ===== COLOCATIONS ACTIVES ===== -->
+   
     @if($colocations->isNotEmpty())
         <section class="section">
             <div class="section-header">
@@ -143,7 +143,7 @@
         </section>
     @endif
 
-    <!-- ===== COLOCATIONS POSSÉDÉES ===== -->
+   
     @if($ownedColocations->isNotEmpty())
         <section class="section">
             <div class="section-header">
@@ -201,7 +201,7 @@
         </section>
     @endif
 
-    <!-- ===== ÉTAT VIDE ===== -->
+
     @if($colocations->isEmpty() && $ownedColocations->isEmpty())
         <div class="empty-state">
             <div class="empty-icon">
@@ -225,7 +225,7 @@
 </div>
 
 <style>
-    /* ===== STYLES AMÉLIORÉS ===== */
+  
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     :root {
@@ -237,7 +237,7 @@
         --card-shadow-hover: 0 20px 30px -10px rgba(6, 78, 59, 0.15);
     }
 
-    /* Blobs animés */
+   
     .blob {
         position: fixed;
         border-radius: 50%;
@@ -279,7 +279,7 @@
         66% { transform: translate(-30px, 30px) scale(0.95); }
     }
 
-    /* Container principal */
+
     .colocations-container {
         max-width: 1200px;
         margin: 0 auto;
@@ -288,7 +288,6 @@
         z-index: 10;
     }
 
-    /* ===== PAGE HEADER ===== */
     .page-header {
         background: white;
         border-radius: 24px;
@@ -342,7 +341,7 @@
         font-size: 0.95rem;
     }
 
-    /* Bouton de création */
+  
     .btn-create {
         display: inline-flex;
         align-items: center;
@@ -375,7 +374,7 @@
         transform: rotate(90deg);
     }
 
-    /* Header stats */
+   
     .header-stats {
         display: flex;
         gap: 2rem;
@@ -403,7 +402,7 @@
         margin-top: 0.25rem;
     }
 
-    /* ===== ALERTES ===== */
+  
     .alert {
         background: white;
         border-radius: 16px;
@@ -469,7 +468,7 @@
         }
     }
 
-    /* ===== SECTIONS ===== */
+
     .section {
         margin-bottom: 3rem;
     }
@@ -510,14 +509,14 @@
         font-weight: 600;
     }
 
-    /* ===== GRILLE ===== */
+  
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 1.5rem;
     }
 
-    /* ===== CARTES ===== */
+
     .card {
         background: white;
         border-radius: 20px;
@@ -642,7 +641,7 @@
         transform: translateX(4px);
     }
 
-    /* ===== ÉTAT VIDE ===== */
+   
     .empty-state {
         text-align: center;
         padding: 4rem 2rem;
@@ -707,7 +706,7 @@
         transform: rotate(90deg);
     }
 
-    /* ===== RESPONSIVE ===== */
+ 
     @media (max-width: 768px) {
         .colocations-container {
             padding: 1rem;
@@ -748,7 +747,7 @@
     }
 </style>
 
-<!-- Ajout de la bibliothèque AOS pour les animations -->
+
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -758,7 +757,7 @@
         offset: 50
     });
 
-    // Animation supplémentaire pour les cartes
+    
     document.querySelectorAll('.card').forEach((card, index) => {
         card.style.animationDelay = `${index * 0.1}s`;
     });
