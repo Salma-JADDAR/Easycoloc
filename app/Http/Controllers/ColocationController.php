@@ -198,14 +198,8 @@ class ColocationController extends Controller{
             ->with('success', 'Colocation mise à jour.');
     }
 
-    /**
-     * Annuler colocation - Seulement si l'owner et colocation vide
-     */
-   /**
- * Annuler colocation - Version avec requête directe
- */
-    public function annulerColocation($idColocation)
-{
+  
+    public function annulerColocation($idColocation){
     $utilisateurConnecte = Auth::user();
     $colocation = Colocation::find($idColocation);
 
