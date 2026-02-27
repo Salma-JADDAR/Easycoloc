@@ -99,11 +99,8 @@ class ColocationController extends Controller{
             ->with('success', 'Colocation créée avec succès.');
     }
 
-    /**
-     * Afficher détails colocation
-     */
-    public function afficherColocation($idColocation)
-    {
+  
+    public function afficherColocation($idColocation){
         $utilisateurConnecte = Auth::user();
 
         if (!$utilisateurConnecte) {
