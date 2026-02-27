@@ -146,11 +146,8 @@ class ColocationController extends Controller{
         ));
     }
 
-    /**
-     * Afficher formulaire d'édition
-     */
-    public function afficherFormulaireEdition($idColocation)
-    {
+   
+    public function afficherFormulaireEdition($idColocation){
         $utilisateurConnecte = Auth::user();
 
         if (!$utilisateurConnecte) {
