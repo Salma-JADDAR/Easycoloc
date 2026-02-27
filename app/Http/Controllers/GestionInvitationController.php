@@ -115,11 +115,8 @@ class GestionInvitationController extends Controller{
         return view('invitations.show', compact('invitation'));
     }
 
-    /**
-     * Accepter une invitation
-     */
-    public function accepterInvitation(Request $requete, $token)
-    {
+  
+    public function accepterInvitation(Request $requete, $token){
         $invitation = Invitation::where('token', $token)->first();
 
         if (!$invitation) {
@@ -137,27 +134,25 @@ class GestionInvitationController extends Controller{
                 ->with('error', 'Cette invitation a expiré.');
         }
 
-        // Si l'utilisateur n'est pas connecté, rediriger vers l'inscription
+      
         if (!Auth::check()) {
             session(['invitation_token' => $token]);
             return redirect()->route('register', ['email' => $invitation->email]);
         }
 
         $utilisateur = Auth::user();
-
-        // Vérifier que l'email correspond
         if ($utilisateur->email !== $invitation->email) {
             return redirect()->route('dashboard')
                 ->with('error', 'Cette invitation ne correspond pas à votre compte.');
         }
 
-        // Vérifier que l'utilisateur n'est pas banni
+        
         if (!is_null($utilisateur->banned_at)) {
             return redirect()->route('dashboard')
                 ->with('error', 'Vous ne pouvez pas rejoindre une colocation car vous êtes banni.');
         }
 
-        // Vérifier si l'utilisateur est DÉJÀ membre de cette colocation
+      
         $estDejaMembre = DB::table('memberships')
             ->where('colocation_id', $invitation->colocation_id)
             ->where('user_id', $utilisateur->id)
@@ -165,7 +160,7 @@ class GestionInvitationController extends Controller{
             ->exists();
 
         if ($estDejaMembre) {
-            // Marquer l'invitation comme acceptée
+           
             $invitation->status = 'accepted';
             $invitation->save();
             
@@ -173,7 +168,6 @@ class GestionInvitationController extends Controller{
                 ->with('info', 'Vous êtes déjà membre de cette colocation. L\'invitation a été marquée comme acceptée.');
         }
 
-        // Vérifier que l'utilisateur n'a pas déjà une autre colocation active
         $aUneAutreColocationActive = DB::table('memberships')
             ->where('user_id', $utilisateur->id)
             ->whereNull('left_at')
@@ -185,14 +179,14 @@ class GestionInvitationController extends Controller{
                 ->with('error', 'Vous avez déjà une colocation active. Vous devez la quitter avant d\'en rejoindre une autre.');
         }
 
-        // Vérifier que la colocation est toujours active
+     
         $colocation = Colocation::find($invitation->colocation_id);
         if (!$colocation || !$colocation->estActive()) {
             return redirect()->route('dashboard')
                 ->with('error', 'Cette colocation n\'est plus active.');
         }
 
-        // Ajouter l'utilisateur comme membre
+    
         DB::table('memberships')->insert([
             'user_id' => $utilisateur->id,
             'colocation_id' => $invitation->colocation_id,
@@ -202,7 +196,7 @@ class GestionInvitationController extends Controller{
             'updated_at' => now(),
         ]);
 
-        // Marquer l'invitation comme acceptée
+    
         $invitation->status = 'accepted';
         $invitation->save();
 
