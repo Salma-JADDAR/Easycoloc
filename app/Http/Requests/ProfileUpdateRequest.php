@@ -6,11 +6,8 @@ use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ProfileUpdateRequest extends FormRequest
-{
-    /**
-     * Déterminer si l'utilisateur est autorisé
-     */
+class ProfileUpdateRequest extends FormRequest{
+   
     public function authorize(): bool
     {
         return true;
