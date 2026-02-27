@@ -3,12 +3,12 @@
 @section('title', 'Administration')
 
 @section('content')
-<!-- Blobs d'arrière-plan animés -->
+
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 
 <div class="space-y-6 relative z-10">
-    <!-- ===== EN-TÊTE SIMPLE ===== -->
+    
     <div class="header-simple">
         <div class="header-content">
             <div class="header-icon">
@@ -23,9 +23,9 @@
         </div>
     </div>
 
-    <!-- ===== STATISTIQUES SIMPLES ===== -->
+ 
     <div class="stats-grid-simple">
-        <!-- Total Utilisateurs -->
+   
         <div class="stat-card">
             <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-green);">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
