@@ -268,11 +268,8 @@ class ColocationController extends Controller{
             ->with('success', 'Vous avez quitté la colocation.');
     }
 
-    /**
-     * Transférer propriété
-     */
-    public function transfererPropriete($idColocation, $nouveauProprietaireId)
-    {
+  
+    public function transfererPropriete($idColocation, $nouveauProprietaireId){
         $utilisateurConnecte = Auth::user();
         $colocation = Colocation::find($idColocation);
 
@@ -285,7 +282,7 @@ class ColocationController extends Controller{
             abort(403, 'Seul le propriétaire peut transférer la propriété.');
         }
 
-        // Vérifier que le nouveau propriétaire est membre
+       
         $nouveauMembre = DB::table('memberships')
             ->where('colocation_id', $idColocation)
             ->where('user_id', $nouveauProprietaireId)
