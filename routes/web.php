@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/password', [App\Http\Controllers\ProfileController::class, 'updatePassword'])->name('password.update');
 
     
-    // Colocations
+   
     Route::get('/mes-colocations', [ColocationController::class, 'afficherColocationsUtilisateur'])->name('colocations.index');
     Route::get('/colocations/creer', [ColocationController::class, 'afficherFormulaireCreation'])->name('colocations.create');
     Route::post('/colocations', [ColocationController::class, 'enregistrerColocation'])->name('colocations.store');
@@ -53,12 +53,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/colocations/{idColocation}/membres/{membreId}', [ColocationController::class, 'retirerMembre'])->name('colocations.members.remove');
     Route::post('/colocations/{idColocation}/transferer/{nouveauProprietaireId}', [ColocationController::class, 'transfererPropriete'])->name('colocations.transfer');
     
-    // Invitations
+  
     Route::post('/colocations/{idColoc}/invitations', [GestionInvitationController::class, 'creerInvitation'])->name('invitations.store');
     Route::delete('/invitations/{idInvitation}', [GestionInvitationController::class, 'supprimerInvitation'])->name('invitations.destroy');
 });
 
-// Routes publiques pour les invitations
+
 Route::get('/invitations/{token}', [GestionInvitationController::class, 'afficherInvitation'])->name('invitations.show');
 Route::post('/invitations/{token}/accepter', [GestionInvitationController::class, 'accepterInvitation'])->name('invitations.accept');
 Route::delete('/invitations/{token}/refuser', [GestionInvitationController::class, 'refuserInvitation'])->name('invitations.decline');
