@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    /**
-     * Dashboard admin
-     */
     public function dashboard()
     {
         // Vérifier que l'utilisateur est connecté
