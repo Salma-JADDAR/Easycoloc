@@ -27,29 +27,27 @@ class GestionInvitationController extends Controller{
                 ->with('error', 'Colocation introuvable.');
         }
 
-        // Vérifier que l'utilisateur est le propriétaire
+       
         if ($colocation->owner_id != $utilisateurConnecte->id) {
             return redirect()->route('colocations.show', $colocation)
                 ->with('error', 'Action non autorisée.');
         }
 
-        // Vérifier que la colocation est active
         if (!$colocation->estActive()) {
             return redirect()->route('colocations.show', $colocation)
                 ->with('error', 'Impossible d\'inviter dans une colocation annulée.');
         }
 
-        // Validation de l'email
+     
         $requete->validate([
             'email' => 'required|email|max:255',
         ]);
 
         $emailInvite = $requete->email;
 
-        // Vérifier si l'utilisateur existe déjà
+       
         $utilisateurExistant = User::where('email', $emailInvite)->first();
 
-        // Vérifier si déjà membre
         if ($utilisateurExistant) {
             $dejaMembre = DB::table('memberships')
                 ->where('colocation_id', $colocation->id)
@@ -63,7 +61,7 @@ class GestionInvitationController extends Controller{
             }
         }
 
-        // Vérifier si une invitation en attente existe déjà
+     
         $invitationExistante = Invitation::where('colocation_id', $colocation->id)
             ->where('email', $emailInvite)
             ->where('status', 'pending')
@@ -74,7 +72,7 @@ class GestionInvitationController extends Controller{
                 ->with('error', 'Une invitation est déjà en attente pour cet email.');
         }
 
-        // Créer l'invitation
+  
         $nouvelleInvitation = new Invitation();
         $nouvelleInvitation->email = $emailInvite;
         $nouvelleInvitation->token = md5(uniqid() . $emailInvite . time());
@@ -84,17 +82,16 @@ class GestionInvitationController extends Controller{
         $nouvelleInvitation->invited_by_id = $utilisateurConnecte->id;
         $nouvelleInvitation->save();
 
-        // === ENVOI DE L'EMAIL ===
+       
         try {
-            // Charger les relations pour l'email
+           
             $nouvelleInvitation->load(['inviteur', 'colocation']);
-            
-            // Envoyer l'email
+        
             Mail::to($emailInvite)->send(new InvitationMail($nouvelleInvitation));
             
             $message = "Invitation envoyée avec succès à $emailInvite. Un email a été envoyé.";
         } catch (\Exception $e) {
-            // Si l'email échoue, on garde l'invitation mais on prévient l'utilisateur
+         
             $urlInvitation = route('invitations.show', $nouvelleInvitation->token);
             $message = "Invitation créée mais l'envoi de l'email a échoué. Lien : $urlInvitation";
         }
