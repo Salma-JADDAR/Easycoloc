@@ -225,11 +225,8 @@ class GestionInvitationController extends Controller{
             ->with('info', 'Invitation refusée.');
     }
 
-    /**
-     * Supprimer une invitation (annuler)
-     */
-    public function supprimerInvitation($idInvitation)
-    {
+   
+    public function supprimerInvitation($idInvitation){
         $utilisateur = Auth::user();
 
         if (!$utilisateur) {
