@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ColocationController extends Controller
-{
+class ColocationController extends Controller{
    
-    public function afficherColocationsUtilisateur()
-    {
+    public function afficherColocationsUtilisateur(){
         $utilisateurConnecte = Auth::user();
 
         if (!$utilisateurConnecte) {
