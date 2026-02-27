@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="dashboard">
-    <!-- Blobs d'arrière-plan -->
+ 
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
     <div class="container">
-        <!-- Page Header -->
+       
         <div class="page-header">
             <div class="header-content">
                 <div class="header-title-section">
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <!-- Formulaire -->
+     
         <div class="form-card">
             <form method="POST" action="{{ route('colocations.store') }}" class="form-container">
                 @csrf
