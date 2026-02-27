@@ -7,13 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Invitation;
 
-class DashboardController extends Controller
-{
-    public function index()
-    {
+class DashboardController extends Controller{
+    public function index(){
         $utilisateur = Auth::user();
         
-        // Récupérer les invitations en attente pour cet utilisateur
+        
         $invitationsEnAttente = Invitation::with(['colocation', 'inviteur'])
             ->where('email', $utilisateur->email)
             ->where('status', 'pending')
