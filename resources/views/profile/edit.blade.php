@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <!-- Messages -->
+ 
     @if(session('success'))
         <div class="alert alert-success">
             <div class="alert-icon">
@@ -75,9 +75,8 @@
         </div>
     @endif
 
-    <!-- ===== CARTES PROFIL ===== -->
     <div class="cards-grid">
-        <!-- Carte Informations personnelles -->
+      
         <div class="card" data-aos="fade-up">
             <div class="card-header">
                 <div class="card-title-wrapper">
@@ -108,7 +107,7 @@
             </div>
         </div>
 
-        <!-- Carte Modifier le profil -->
+      
         <div class="card" data-aos="fade-up" data-aos-delay="50">
             <div class="card-header">
                 <div class="card-title-wrapper">
@@ -152,7 +151,7 @@
             </div>
         </div>
 
-        <!-- Carte Changer le mot de passe -->
+       
         <div class="card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-header">
                 <div class="card-title-wrapper">
@@ -199,7 +198,7 @@
             </div>
         </div>
 
-        <!-- Carte Supprimer le compte -->
+   
         <div class="card" data-aos="fade-up" data-aos-delay="150">
             <div class="card-header">
                 <div class="card-title-wrapper">
@@ -246,7 +245,7 @@
 </div>
 
 <style>
-    /* ===== STYLES IDENTIQUES À MES COLOCATIONS ===== */
+    
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
     :root {
@@ -260,7 +259,6 @@
         --danger-light: #fee2e2;
     }
 
-    /* Blobs animés */
     .blob {
         position: fixed;
         border-radius: 50%;
@@ -302,7 +300,7 @@
         66% { transform: translate(-30px, 30px) scale(0.95); }
     }
 
-    /* Container principal */
+   
     .profile-container {
         max-width: 1200px;
         margin: 0 auto;
@@ -311,7 +309,7 @@
         z-index: 10;
     }
 
-    /* ===== PAGE HEADER ===== */
+  
     .page-header {
         background: white;
         border-radius: 24px;
@@ -398,7 +396,7 @@
         transform: translateX(-4px);
     }
 
-    /* Header stats */
+   
     .header-stats {
         display: flex;
         gap: 2rem;
@@ -426,7 +424,7 @@
         margin-top: 0.25rem;
     }
 
-    /* ===== ALERTES ===== */
+ 
     .alert {
         background: white;
         border-radius: 16px;
@@ -492,14 +490,14 @@
         }
     }
 
-    /* ===== GRILLE ===== */
+ 
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
         gap: 1.5rem;
     }
 
-    /* ===== CARTES ===== */
+   
     .card {
         background: white;
         border-radius: 20px;

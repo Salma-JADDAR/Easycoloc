@@ -25,20 +25,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
 
-// =============================================
-// ROUTES PROTÉGÉES (nécessitent authentification)
-// =============================================
 
-// Routes admin
+
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
     Route::post('/users/{user}/ban', [App\Http\Controllers\AdminController::class, 'banUser'])->name('users.ban');
     Route::post('/users/{user}/unban', [App\Http\Controllers\AdminController::class, 'unbanUser'])->name('users.unban');
 });
-// Routes protégées
+
 Route::middleware('auth')->group(function () {
-    // Profil
-    
+  
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
