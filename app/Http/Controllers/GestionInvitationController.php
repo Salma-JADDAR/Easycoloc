@@ -100,12 +100,9 @@ class GestionInvitationController extends Controller{
             ->with('success', $message);
     }
 
-    /**
-     * Afficher une invitation
-     */
-    public function afficherInvitation($token)
-    {
-        // Charge l'invitation avec ses relations
+   
+    public function afficherInvitation($token){
+      
         $invitation = Invitation::with(['inviteur', 'colocation'])
             ->where('token', $token)
             ->first();
