@@ -692,7 +692,7 @@
             }
         });
 
-        // Animation au scroll pour les alerts
+        
         document.querySelectorAll('.alert').forEach(alert => {
             setTimeout(() => {
                 alert.style.opacity = '0';
