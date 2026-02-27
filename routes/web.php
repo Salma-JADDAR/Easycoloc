@@ -12,9 +12,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
 Route::get('/register', [InscriptionController::class, 'afficherFormulaire'])->name('register');
 Route::post('/register', [InscriptionController::class, 'traiter'])->name('register.store');
 
