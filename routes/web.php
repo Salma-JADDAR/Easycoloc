@@ -7,25 +7,23 @@ use App\Http\Controllers\GestionInvitationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Page d'accueil
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-// =============================================
-// AUTHENTIFICATION
-// =============================================
 
-// Inscription
+
+
 Route::get('/register', [InscriptionController::class, 'afficherFormulaire'])->name('register');
 Route::post('/register', [InscriptionController::class, 'traiter'])->name('register.store');
 
-// Connexion / Déconnexion
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
-// Dashboard
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
