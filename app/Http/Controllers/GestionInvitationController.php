@@ -204,11 +204,8 @@ class GestionInvitationController extends Controller{
             ->with('success', 'Vous avez rejoint la colocation avec succès.');
     }
 
-    /**
-     * Refuser une invitation
-     */
-    public function refuserInvitation($token)
-    {
+  
+    public function refuserInvitation($token){
         $invitation = Invitation::where('token', $token)->first();
 
         if (!$invitation) {
