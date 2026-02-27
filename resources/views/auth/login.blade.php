@@ -5,9 +5,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Sans:wght@300;400;500&display=swap');
 
         :root {
-            /* Palette Vert & Blanc */
-            --primary-green: #064e3b; /* Emerald ghameq */
-            --accent-green: #10b981;  /* Emerald sate3 */
+            
+            --primary-green: #064e3b; 
+            --accent-green: #10b981;  
             --bg-light: #f9fafb;
             --glow-green: rgba(16, 185, 129, 0.15);
         }
@@ -15,7 +15,6 @@
         .login-wrapper {
             font-family: 'DM Sans', sans-serif;
             background: var(--bg-light); 
-            /* Background fih dégradé khfif dyal l-khdar */
             background-image: 
                 radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(6, 78, 59, 0.05) 0px, transparent 50%);
@@ -28,7 +27,6 @@
             color: var(--primary-green);
         }
 
-        /* Animated Background Blobs (Vert) */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -114,7 +112,7 @@
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
         }
 
-        /* Button Vert */
+   
         .submit-btn {
             width: 100%;
             padding: 16px;
