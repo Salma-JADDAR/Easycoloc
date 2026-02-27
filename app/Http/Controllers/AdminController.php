@@ -35,8 +35,7 @@ class AdminController extends Controller{
         return view('admin.dashboard', compact('stats', 'users'));
     }
 
-    public function banUser(User $user)
-    {
+    public function banUser(User $user){
         
         if (!Auth::check()) {
             return redirect()->route('login');
@@ -58,8 +57,7 @@ class AdminController extends Controller{
     }
 
    
-    public function unbanUser(User $user)
-    {
+    public function unbanUser(User $user){
         
         if (!Auth::check()) {
             return redirect()->route('login');
