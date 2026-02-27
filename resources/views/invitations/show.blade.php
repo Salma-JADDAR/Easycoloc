@@ -215,7 +215,7 @@
                         </div>
                         <div class="info-item">
                             <span class="info-label">Invité par</span>
-                            {{-- CORRECTION: inviteur au lieu de inviter --}}
+                            
                             <span class="info-value">{{ $invitation->inviteur->name ?? 'Utilisateur inconnu' }}</span>
                         </div>
                         <div class="info-item">
