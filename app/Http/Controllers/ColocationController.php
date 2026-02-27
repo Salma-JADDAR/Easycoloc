@@ -310,11 +310,8 @@ class ColocationController extends Controller{
             ->with('success', 'Propriété transférée.');
     }
 
-    /**
-     * Retirer un membre (pour le propriétaire)
-     */
-    public function retirerMembre($idColocation, $membreId)
-    {
+ 
+    public function retirerMembre($idColocation, $membreId){
         $utilisateurConnecte = Auth::user();
         $colocation = Colocation::find($idColocation);
 
@@ -327,7 +324,7 @@ class ColocationController extends Controller{
             abort(403, 'Seul le propriétaire peut retirer des membres.');
         }
 
-        // Empêcher de retirer le propriétaire
+    
         if ($membreId == $colocation->owner_id) {
             return redirect()->route('colocations.show', $idColocation)
                 ->with('error', 'Vous ne pouvez pas retirer le propriétaire.');
