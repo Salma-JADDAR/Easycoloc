@@ -173,11 +173,8 @@ class ColocationController extends Controller{
         return view('colocations.edit', compact('colocation'));
     }
 
-    /**
-     * Mettre à jour colocation
-     */
-    public function mettreAJourColocation(Request $requete, $idColocation)
-    {
+   
+    public function mettreAJourColocation(Request $requete, $idColocation){
         $utilisateurConnecte = Auth::user();
         $colocation = Colocation::find($idColocation);
 
