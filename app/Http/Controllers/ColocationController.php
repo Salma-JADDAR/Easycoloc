@@ -217,7 +217,7 @@ class ColocationController extends Controller{
             ->with('error', 'Colocation déjà annulée.');
     }
 
-    // Vérifier qu'il n'y a pas d'autres membres
+    
     $autresMembres = DB::table('memberships')
         ->where('colocation_id', $idColocation)
         ->whereNull('left_at')
@@ -232,7 +232,6 @@ class ColocationController extends Controller{
   
     $colocation->annuler();
 
-    // Retirer le propriétaire
     DB::table('memberships')
         ->where('colocation_id', $idColocation)
         ->where('user_id', $utilisateurConnecte->id)
@@ -242,11 +241,8 @@ class ColocationController extends Controller{
         ->with('success', 'Colocation annulée avec succès.');
 }
 
-    /**
-     * Quitter colocation (pour les membres)
-     */
-    public function quitterColocation($idColocation)
-    {
+  
+    public function quitterColocation($idColocation){
         $utilisateurConnecte = Auth::user();
         $colocation = Colocation::find($idColocation);
 
