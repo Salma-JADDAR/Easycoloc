@@ -56,11 +56,8 @@ class ColocationController extends Controller{
         return view('colocations.create');
     }
 
-    /**
-     * Enregistrer une colocation
-     */
-    public function enregistrerColocation(Request $requete)
-    {
+  
+    public function enregistrerColocation(Request $requete){
         $utilisateurConnecte = Auth::user();
 
         if (!$utilisateurConnecte) {
