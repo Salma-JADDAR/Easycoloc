@@ -35,11 +35,8 @@ class ColocationController extends Controller{
         ]);
     }
 
-    /**
-     * Afficher formulaire création
-     */
-    public function afficherFormulaireCreation()
-    {
+  
+    public function afficherFormulaireCreation(){
         $utilisateurConnecte = Auth::user();
 
         if (!$utilisateurConnecte) {
