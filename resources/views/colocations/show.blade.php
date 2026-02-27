@@ -4,11 +4,10 @@
 
 @section('content')
 <div class="dashboard">
-    <!-- Blobs d'arrière-plan -->
+   
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
-    <!-- Page Header -->
     <div class="page-header">
         <div class="header-content">
             <div class="header-title-section">
@@ -35,7 +34,7 @@
         </div>
     </div>
 
-    <!-- Messages -->
+ 
     @if(session('success'))
         <div class="alert-success">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,9 +55,9 @@
 
     <div class="container">
         <div class="grid-2cols">
-            <!-- Colonne principale -->
+          
             <div class="main-column">
-                <!-- Membres -->
+        
                 <div class="section-card">
                     <h2 class="section-title">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +119,6 @@
                     @endif
                 </div>
 
-                <!-- Invitations en attente (Owner only) -->
                 @if($estProprietaire && $invitationsEnAttente->isNotEmpty())
                     <div class="section-card">
                         <h2 class="section-title">
@@ -161,9 +159,8 @@
                 @endif
             </div>
 
-            <!-- Sidebar -->
             <div class="sidebar-column">
-                <!-- Informations -->
+           
                 <div class="section-card">
                     <h3 class="sidebar-title">Informations</h3>
                     
@@ -187,7 +184,7 @@
                     </div>
                 </div>
 
-                <!-- Inviter des membres (Owner only) -->
+            
                 @if($estProprietaire)
                     <div class="section-card">
                         <h3 class="sidebar-title">Inviter des membres</h3>
@@ -218,7 +215,7 @@
                     </div>
                 @endif
 
-                <!-- Zone dangereuse (Owner only) -->
+              
                 @if($estProprietaire)
                     <div class="section-card danger-zone">
                         <h3 class="sidebar-title danger-title">Zone dangereuse</h3>
@@ -242,7 +239,7 @@
 </div>
 
 <style>
-    /* Variables du thème */
+  
     :root {
         --primary-green: #064e3b;
         --accent-green: #10b981;
@@ -271,7 +268,7 @@
             radial-gradient(at 100% 100%, rgba(6, 78, 59, 0.05) 0px, transparent 50%);
     }
 
-    /* Blobs animés */
+
     .blob {
         position: fixed;
         border-radius: 50%;
@@ -304,7 +301,7 @@
         66% { transform: translate(-20px, 20px) rotate(240deg); }
     }
 
-    /* Page Header */
+  
     .page-header {
         position: relative;
         max-width: 1200px;
@@ -584,7 +581,6 @@
         color: #dc2626;
     }
 
-    /* Leave section */
     .leave-section {
         margin-top: 1.5rem;
         padding-top: 1.5rem;
