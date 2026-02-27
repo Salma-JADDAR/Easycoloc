@@ -3,13 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<!-- Blobs d'arrière-plan animés -->
+
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 
 <div class="dashboard-container">
-    <!-- ===== EN-TÊTE AVEC STATISTIQUES ===== -->
+  
     <div class="dashboard-header">
         <div class="header-main">
             <div class="header-greeting">

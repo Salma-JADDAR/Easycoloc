@@ -3,13 +3,13 @@
 @section('title', 'Mon Profil')
 
 @section('content')
-<!-- Blobs d'arrière-plan animés -->
+
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 
 <div class="profile-container">
-    <!-- ===== EN-TÊTE AVEC STATISTIQUES ===== -->
+  
     <div class="page-header">
         <div class="header-main">
             <div class="header-left">
@@ -32,7 +32,7 @@
             </a>
         </div>
 
-        <!-- Mini statistiques -->
+        
         @php $user = auth()->user(); @endphp
         <div class="header-stats">
             <div class="header-stat">
